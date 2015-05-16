@@ -1,0 +1,188 @@
+/**
+ * 
+ */
+dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
+	$scope.folderimgs = FOLDER_IMGS;
+
+	$scope.diemden = {};
+	$scope.diemden.mo_ta = [ {
+		'type' : 'text'
+	} ];
+	$scope.diemden.album = [];
+	$scope.diemden.tag = [];
+	
+	$scope.imgmota = {};
+		
+	$scope.extractLink = function() {
+		if (($scope.anh_dai_dien != undefined) && ($scope.anh_dai_dien != null)) {
+			$name = $scope.anh_dai_dien[0].name;
+			$scope.diemden.anh_dai_dien = $name;
+		}
+		
+		if (($scope.album != undefined) && ($scope.album != null)) {
+			$scope.diemden.album = Array($scope.album.length);
+			for (var i = 0; i < $scope.album.length; i++) {
+				$name = $scope.album[i].name;
+				$scope.diemden.album[i] = {"src":$name};
+			}
+		}
+		
+		for (var i=0; i<$scope.diemden.mo_ta.length; i++) {
+			if ($scope.diemden.mo_ta[i].type == 'img') {
+				$scope.diemden.mo_ta[i].src = $scope.imgmota[i][0].name;
+//				$scope.diemden.mo_ta[i].des = $scope.desmota[i];
+			}
+		}
+	};
+	
+//	
+//	$scope.$watch('album', function() {
+//		
+//	});
+	
+	$scope.upload = function(files) {
+		if (files && files.length) {
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				console.log(file);
+				Upload.upload({
+					url : 'http://localhost/dulichhanoi/index.php/fileupload/upload',
+					file : file
+				});
+			}
+		}
+	};
+	
+	$scope.uploadToFolder = function(files, folder) {
+		if (files && files.length) {
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				console.log(file);
+				Upload.upload({
+					url : 'http://localhost/dulichhanoi/index.php/fileupload/upload/' + folder,
+					file : file
+				});
+			}
+		}
+	};
+	
+	$scope.result = null;
+	
+	$scope.add = function() {
+		$http({
+			method : 'POST',
+			url : HOST_SERVER + 'crud/add/diemden',
+			data : $scope.diemden,
+			headers : {
+				'Content-Type' : 'application/x-www-form-urlencoded'
+			}
+		}).success(function(res) {
+			$scope.id = res;
+			//FIXME Đoạn upload nầy cần được tối ưu
+			//Cần phải loại bỏ các ảnh trùng nhau trước khi upload
+			$scope.extractLink();
+			console.log($scope.diemden);
+			$scope.uploadToFolder($scope.anh_dai_dien, $scope.id);
+			$scope.uploadToFolder($scope.album, $scope.id);
+			
+			for(var i=0; i<$scope.diemden.mo_ta.length; i++) {
+				if($scope.diemden.mo_ta[i].type == 'img') {
+					$scope.uploadToFolder($scope.imgmota[i], $scope.id);
+				}
+			}
+
+			$scope.result = "Đã thêm thành công vào cơ sở dữ liệu";
+		});
+				
+	};
+
+//	$scope.update = function() {
+//		$http.post(HOST_SERVER + 'crud/update/diemden', {
+//			json : JSON.stringify($scope.diemden)
+//		}).success(function(data, status, headers, config) {
+//			$scope.result = data;
+//		});
+//	};
+//
+//	$scope.del = function() {
+//		$http.get(HOST_SERVER + 'crud/delete/diemden/' + $scope.diemden.id)
+//				.success(function(data, status, headers, config) {
+//					$scope.result = data;
+//				});
+//	};
+
+	$scope.addImg = function(it) {
+		p = findLocation($scope.diemden.mo_ta, it);
+		for (var i = $scope.diemden.mo_ta.length - 1; i > p; i--) {
+			$scope.diemden.mo_ta[i + 1] = $scope.diemden.mo_ta[i];
+		}
+		$scope.diemden.mo_ta[p + 1] = {
+			'type' : 'img'
+		};
+	};
+
+	$scope.addText = function(it) {
+		p = findLocation($scope.diemden.mo_ta, it);
+		for (var i = $scope.diemden.mo_ta.length - 1; i > p; i--) {
+			$scope.diemden.mo_ta[i + 1] = $scope.diemden.mo_ta[i];
+		}
+		$scope.diemden.mo_ta[p + 1] = {
+			'type' : 'text'
+		};
+	};
+	
+	$scope.addTitle = function(it) {
+		p = findLocation($scope.diemden.mo_ta, it);
+		for (var i = $scope.diemden.mo_ta.length - 1; i > p; i--) {
+			$scope.diemden.mo_ta[i + 1] = $scope.diemden.mo_ta[i];
+		}
+		$scope.diemden.mo_ta[p + 1] = {
+			'type' : 'title'
+		};
+	};
+	
+	$scope.addImgI = function(p) {
+		for (var i = $scope.diemden.mo_ta.length - 1; i > p; i--) {
+			$scope.diemden.mo_ta[i + 1] = $scope.diemden.mo_ta[i];
+		}
+		$scope.diemden.mo_ta[p + 1] = {
+			'type' : 'img',
+			'content' : null
+		};
+	};
+	
+	$scope.addTextI = function() {
+		for (var i = $scope.diemden.mo_ta.length - 1; i > p; i--) {
+			$scope.diemden.mo_ta[i + 1] = $scope.diemden.mo_ta[i];
+		}
+		$scope.diemden.mo_ta[p + 1] = {
+			'type' : 'text',
+			'content' : null
+		};
+	};
+
+	
+	$scope.del = function(it) {
+		p = findLocation($scope.diemden.mo_ta, it);
+		$scope.diemden.mo_ta.splice(p, 1);
+	};
+
+	findLocation = function(arr, it) {
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] == it) {
+				return i;
+			}
+		}
+	};
+	
+	$scope.addtag = function() {
+		
+		$scope.diemden.tag.push({"name":$scope.temptag,"note":null});
+		$scope.temptag = null;
+	};
+	
+	$scope.removetag = function(tag) {
+		p = findLocation($scope.diemden.tag, tag);
+		$scope.diemden.tag.splice(p, 1);
+	};
+});

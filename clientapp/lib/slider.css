@@ -1,0 +1,179 @@
+.slider {
+background: black;
+overflow: hidden;
+height: 300px;
+width: 550px;
+margin: auto;
+position: relative;
+text-align: center;
+white-space: nowrap;
+line-height: 1;
+color: white;
+max-width: 100%;
+max-height: 100%;
+}
+
+.slider .slides {
+height: 100%;
+width: 100%;
+}
+
+.slider * {
+color: white;
+}
+
+.slider:-webkit-full-screen  {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.slider .slide {
+display: inline-block;
+width: 0px;
+height: 100%;
+transition: opacity 1s;
+margin-right: -4px;
+overflow: hidden;
+white-space: nowrap;
+position: relative;
+opacity: 0;
+}
+
+.slider .slide.active {
+width: 100%;
+opacity: 1;
+}
+
+
+
+.slider .slide img{
+max-width: 100%;
+max-height: 100%;
+display: inline-block;
+padding: 0;
+border:0;
+font-size: 0;
+margin: auto;
+position: absolute;	
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+}
+
+
+
+.slider .controls {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	top: calc(50% - 15px);
+	right: 0;
+	background: none;
+	width: 100%;
+	transition: background 1s;
+}
+
+.slider:hover .controls a{
+	opacity: 0.8;
+}
+
+.slider:hover .controls {
+	/*background: rgba(255,255,255,0.7);*/
+}
+
+.slider .controls a {
+	text-decoration: none;
+	color: #4A4A4A;
+	background: rgba(255,255,255,0.7);
+	border-radius: 100%;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	text-align: center;
+	padding: 10px;
+	display: inline-block;
+	font-size: 20px;
+	opacity: 0.1;
+	transition: opacity .5s;
+	font-family: 'Economica', 'sans-serif';
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.slider .controls a:hover {
+opacity: 1;
+}
+
+
+
+.slider .caption:hover {
+background: rgba(255,255,255,0.4);
+margin-bottom: 0px;
+}
+
+.slider .controls a.prev {
+	float: left;
+}
+
+.slider .controls a.next {
+	float: right;
+}
+
+.slider a.action.full {
+	float: right;
+	font-size: 15px;
+	text-decoration: none;
+	background: rgba(255,255,255,0.1);
+	margin: -10px;
+	margin-bottom: -30px;
+	padding: 10px;
+	vertical-align: top;
+}
+
+.slider .caption {
+vertical-align: middle;
+display: inline-block;
+
+padding: 5px;
+position: absolute;
+bottom: 0;
+left: 0;
+background: rgba(255,255,255,0.1);
+text-align: middle;
+padding: 10px;
+width: calc(100% - 20px);
+transition: background 1s, margin-bottom 1s;
+cursor: pointer;
+min-height: 15px;
+}
+
+.slider .caption .text {
+font-family: 'Economica', 'sans-serif';
+font-size: 22px;
+line-height: 10px;
+}
+
+
+.slider .indicators {
+position: absolute;
+top: 0;
+left: 0;
+text-align: center;
+width: 100%;
+}
+
+.slider .indicators .indicator {
+width: 20px;
+height: 20px;
+border-radius: 100%;
+background: rgba(255,255,255,0.4);
+display: inline-block;
+margin: 10px;
+cursor: pointer;
+box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.2);
+}
+
+.slider .indicators .indicator.active {
+background: rgba(255,255,255,1);
+}

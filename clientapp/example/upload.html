@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../lib/angular.min.js"></script>
+<script type="text/javascript" src="../lib/ng-file-upload.min.js"></script>
+<link type="text/css" rel="stylesheet" href="common.css">
+</head>
+<body>
+	<div ng-app="fileUpload" ng-controller="MyCtrl">
+		watching model:
+		<button ngf-multiple=true ngf-select ng-model="files">Upload using model $watch</button>
+		<button ngf-select ngf-change="upload($files)">Upload on file change</button>
+		<button ng-click="upload(files)">Upload</button>
+		Image thumbnail:
+		<img ngf-src="files[0]" width="200">
+		<span>{{progress}}</span>
+	</div>
+
+	<script type="text/javascript">
+		//inject angular file upload directives and services.
+		var app = angular.module('fileUpload', [ 'ngFileUpload' ]);
+
+		app.controller('MyCtrl', function($scope, Upload) {
+			$scope.$watch('files', function() {
+				//$scope.upload($scope.files);
+			});
+
+			$scope.upload = function(files) {
+				if (files && files.length) {
+					for (var i = 0; i < files.length; i++) {
+						var file = files[i];
+						console.log(file);
+						Upload.upload({
+							url : 'http://localhost/dulichhanoi/index.php/fileupload/upload',
+							file : file
+						}).progress(
+							function(evt) {
+								var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+								$scope.progress = progressPercentage;
+								console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+							}).success(
+							function(data, status, headers, config) {
+									console.log('file ' + config.file.name + 'uploaded. Response: '
+											+ data);
+							});
+					}
+				}
+			};
+		});
+</script>
+</body>
+</html>

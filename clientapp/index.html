@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lam vi du mau</title>
+<script type="text/javascript" src="lib/angular.min.js"></script>
+<script type="text/javascript" src="lib/angular-route.min.js"></script>
+<script type="text/javascript" src="lib/ng-file-upload.min.js"></script>
+<script type="text/javascript" src="dulichapp.js"></script>
+<script type="text/javascript" src="menu/menuCtrl.js"></script>
+<script type="text/javascript" src="dispalyCtrl.js"></script>
+<script type="text/javascript" src="diemden/detaildiemdenCtrl.js"></script>
+<script type="text/javascript" src="diemden/topdiemdenCtrl.js"></script>
+<script type="text/javascript" src="diemden/adddiemdenCtrl.js"></script>
+<script type="text/javascript" src="khachsan/detailkhachsanCtrl.js"></script>
+<script type="text/javascript" src="khachsan/topkhachsanCtrl.js"></script>
+<script type="text/javascript" src="monan/detailmonanCtrl.js"></script>
+<script type="text/javascript" src="monan/topmonanCtrl.js"></script>
+<script type="text/javascript" src="nhahang/detailnhahangCtrl.js"></script>
+<script type="text/javascript" src="nhahang/topnhahangCtrl.js"></script>
+<script type="text/javascript" src="giaitri/detailgiaitriCtrl.js"></script>
+<script type="text/javascript" src="giaitri/topgiaitriCtrl.js"></script>
+<script type="text/javascript" src="tour/detailtourCtrl.js"></script>
+<script type="text/javascript" src="tour/toptourCtrl.js"></script>
+<script type="text/javascript" src="timkiem/searchCtrl.js"></script>
+<script type="text/javascript" src="lib/jssor.slider.mini.js"></script>
+<script type="text/javascript" src="lib/dang-jssor.min.js"></script>
+<script type="text/javascript" src="lib/angular-carousel.min.js"></script>
+<script type="text/javascript" src="lib/angular-touch.min.js"></script>
+<link type="text/css" rel="stylesheet" href="lib/angular-carousel.min.css">
+</head>
+<body ng-app="dulichapp">
+<div ng-controller="displayCtrl">
+<div ng-show="displayAd">
+<ul rn-carousel class="image">
+  <li>slide #1</li>
+  <li>slide #2</li>
+  <li>slide #3</li>
+</ul>
+</div>
+<div ng-show="displayNavi">Navi</div>
+<div ng-view></div>
+</div>
+</body>
+</html>
