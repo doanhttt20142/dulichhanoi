@@ -30,28 +30,9 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 		for (var i=0; i<$scope.diemden.mo_ta.length; i++) {
 			if ($scope.diemden.mo_ta[i].type == 'img') {
 				$scope.diemden.mo_ta[i].src = $scope.imgmota[i][0].name;
-//				$scope.diemden.mo_ta[i].des = $scope.desmota[i];
 			}
 		}
 	};
-	
-//	
-//	$scope.$watch('album', function() {
-//		
-//	});
-	
-//	$scope.upload = function(files) {
-//		if (files && files.length) {
-//			for (var i = 0; i < files.length; i++) {
-//				var file = files[i];
-//				console.log(file);
-//				Upload.upload({
-//					url : 'http://localhost/dulichhanoi/index.php/fileupload/upload',
-//					file : file
-//				});
-//			}
-//		}
-//	};
 	
 	$scope.uploadToFolder = function(files, folder) {
 		if (files && files.length) {
