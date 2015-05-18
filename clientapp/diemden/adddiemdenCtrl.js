@@ -97,20 +97,7 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 				
 	};
 
-//	$scope.update = function() {
-//		$http.post(HOST_SERVER + 'crud/update/diemden', {
-//			json : JSON.stringify($scope.diemden)
-//		}).success(function(data, status, headers, config) {
-//			$scope.result = data;
-//		});
-//	};
-//
-//	$scope.del = function() {
-//		$http.get(HOST_SERVER + 'crud/delete/diemden/' + $scope.diemden.id)
-//				.success(function(data, status, headers, config) {
-//					$scope.result = data;
-//				});
-//	};
+
 
 	$scope.addImg = function(it) {
 		p = findLocation($scope.diemden.mo_ta, it);
