@@ -9,7 +9,7 @@ dulichapp.controller('topdiemdenCtrl', function($scope, $http) {
 	
 	$scope.hasMore = true;
 	
-	$scope.folderimgs = FOLDER_IMGS;
+	$scope.folderimgs = FOLDER_IMGS + 'diemden/';
 	
 	$scope.loadmore = function(){
 		$http.get(HOST_SERVER + 'crud/top/diemden/' + column + '/' + $scope.data.length +'/' + D).success(function(data, status, headers, config) {

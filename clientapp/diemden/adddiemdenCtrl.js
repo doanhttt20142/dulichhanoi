@@ -40,18 +40,18 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 //		
 //	});
 	
-	$scope.upload = function(files) {
-		if (files && files.length) {
-			for (var i = 0; i < files.length; i++) {
-				var file = files[i];
-				console.log(file);
-				Upload.upload({
-					url : 'http://localhost/dulichhanoi/index.php/fileupload/upload',
-					file : file
-				});
-			}
-		}
-	};
+//	$scope.upload = function(files) {
+//		if (files && files.length) {
+//			for (var i = 0; i < files.length; i++) {
+//				var file = files[i];
+//				console.log(file);
+//				Upload.upload({
+//					url : 'http://localhost/dulichhanoi/index.php/fileupload/upload',
+//					file : file
+//				});
+//			}
+//		}
+//	};
 	
 	$scope.uploadToFolder = function(files, folder) {
 		if (files && files.length) {
@@ -69,6 +69,7 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 	$scope.result = null;
 	
 	$scope.add = function() {
+		$scope.extractLink();
 		$http({
 			method : 'POST',
 			url : HOST_SERVER + 'crud/add/diemden',
@@ -78,16 +79,16 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 			}
 		}).success(function(res) {
 			$scope.id = res;
+			console.log('idddddddddddddd:' + $scope.id);
 			//FIXME Đoạn upload nầy cần được tối ưu
 			//Cần phải loại bỏ các ảnh trùng nhau trước khi upload
-			$scope.extractLink();
 			console.log($scope.diemden);
-			$scope.uploadToFolder($scope.anh_dai_dien, $scope.id);
-			$scope.uploadToFolder($scope.album, $scope.id);
+			$scope.uploadToFolder($scope.anh_dai_dien, 'diemden/' + $scope.id);
+			$scope.uploadToFolder($scope.album, 'diemden/' + $scope.id);
 			
 			for(var i=0; i<$scope.diemden.mo_ta.length; i++) {
 				if($scope.diemden.mo_ta[i].type == 'img') {
-					$scope.uploadToFolder($scope.imgmota[i], $scope.id);
+					$scope.uploadToFolder($scope.imgmota[i],'diemden/' + $scope.id);
 				}
 			}
 
@@ -176,8 +177,7 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 	};
 	
 	$scope.addtag = function() {
-		
-		$scope.diemden.tag.push({"name":$scope.temptag,"note":null});
+		$scope.diemden.tag.push($scope.temptag);
 		$scope.temptag = null;
 	};
 	

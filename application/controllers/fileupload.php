@@ -4,7 +4,7 @@ class fileupload extends CI_Controller {
 		parent::__construct ();
 	}
 	
-	public function upload($folder = null) {
+	public function upload($category, $folder) {
 		// properties of the uploaded file
 		$name = $_FILES ["file"] ["name"];
 		$type = $_FILES ["file"] ["type"];
@@ -21,12 +21,8 @@ class fileupload extends CI_Controller {
 		if ($error > 0)
 			die ( "Error uploading file! code $error." );
 		else {
-			if ($folder != null) {
-				mkdir("imgs/$folder");
-				move_uploaded_file ( $temp, "imgs/$folder/$name" );
-			} else {
-				move_uploaded_file ( $temp, "uploaded/$name" );
-			}
+			mkdir("imgs/$category/$folder");
+			move_uploaded_file ( $temp, "imgs/$category/$folder/$name" );
 		}
 	}
 }

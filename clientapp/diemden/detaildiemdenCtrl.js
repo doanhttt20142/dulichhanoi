@@ -4,7 +4,7 @@
 dulichapp.controller('detaildiemdenCtrl', function($scope, $http, $routeParams) {
 	$scope.id = $routeParams.id;
 	
-	$scope.folderimgs = FOLDER_IMGS;
+	$scope.folderimgs = FOLDER_IMGS + 'diemden/';
 	
 	$scope.diemden = null;
 	

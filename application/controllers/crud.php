@@ -1,5 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+/**
+ * @property tag_model $tag_model
+ * @author tuantri
+ *
+ */
 class crud extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
@@ -47,18 +52,21 @@ class crud extends CI_Controller{
 		$obj = json_decode(file_get_contents('php://input'));
 		$modelname = $category.'_model';
 		$this->load->model($modelname);
-		$id = $this->{$modelname}->insert($obj);
+		$id = $this->{$modelname}->insert(clone $obj);
+		$this->load->model('tag_model');
+		foreach ($obj->tag as $tag) {
+			try {
+				$this->tag_model->addDocsToTagName($tag, $category, $id);
+			} catch (Exception $e) {
+				if ($e->getCode() == tag_model::TAGNAMENOTEXIST_ID) {
+					$this->tag_model->addTagName($tag);
+					$this->tag_model->addDocsToTagName($tag, $category, $id);
+				}
+			}
+		}
 		echo $id;
 	}
-	
-	public function addbrief( $category ) {
-		$json = $_POST['json'];
-		$modelname = $category.'_model';
-		$this->load->model($modelname);
-		$obj = json_decode($json);
-		$this->{$modelname}->addbrief($obj);
-	}
-	
+		
 	/**
 	 * Cập nhật 1 thực thể thông tin cũ
 	 * @param unknown $category
@@ -87,9 +95,9 @@ class crud extends CI_Controller{
 	
 	/**
 	 * thêm 1 đánh giá cho 1 thực thể thông tin
-	 * @param unknown $category
-	 * @param unknown $id
-	 * @param unknown $score
+	 * @param string $category
+	 * @param int $id
+	 * @param int $score
 	 */
 	public function rate( $category, $id, $score ) {
 		//Kiểm tra tất cả các tham số đầu vào đảm bảo hợp lệ
@@ -110,7 +118,13 @@ class crud extends CI_Controller{
 	}
 	
 	public function test() {
-		phpinfo();
+		$this->load->model('tag_model');
+		
+		try {
+			var_dump($this->tag_model->getHint('tân', 10));
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
 	}
 }
 ?>

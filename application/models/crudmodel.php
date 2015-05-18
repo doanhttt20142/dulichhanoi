@@ -15,4 +15,6 @@ interface crudmodel {
 	
 	public function updateRate($id, $ratecount, $ratescore);
 	
+// 	public function removeTag($id, $tagname);
+	
 }
