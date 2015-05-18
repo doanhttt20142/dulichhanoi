@@ -59,7 +59,7 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 				var file = files[i];
 				console.log(file);
 				Upload.upload({
-					url : 'http://localhost/dulichhanoi/index.php/fileupload/upload/' + folder,
+					url : HOST_SERVER +'fileupload/upload/' + folder,
 					file : file
 				});
 			}
