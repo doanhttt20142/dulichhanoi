@@ -61,8 +61,6 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 		}).success(function(res) {
 			$scope.id = res;
 			console.log('idddddddddddddd:' + $scope.id);
-			//FIXME Đoạn upload nầy cần được tối ưu
-			//Cần phải loại bỏ các ảnh trùng nhau trước khi upload
 			console.log($scope.diemden);
 			$scope.uploadToFolder($scope.anh_dai_dien, 'diemden/' + $scope.id);
 			$scope.uploadToFolder($scope.album, 'diemden/' + $scope.id);
