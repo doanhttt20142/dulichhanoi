@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 18, 2015 at 10:44 PM
+-- Generation Time: May 19, 2015 at 11:05 AM
 -- Server version: 5.5.41-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.6
 
@@ -27,18 +27,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `tag` (
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `hint` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nhahang` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `khachsan` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `monan` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `diemden` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `giaitri` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tour` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `hint` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `nhahang` text COLLATE utf8_unicode_ci NOT NULL,
+  `khachsan` text COLLATE utf8_unicode_ci NOT NULL,
+  `monan` text COLLATE utf8_unicode_ci NOT NULL,
+  `diemden` text COLLATE utf8_unicode_ci NOT NULL,
+  `giaitri` text COLLATE utf8_unicode_ci NOT NULL,
+  `tour` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`name`),
   UNIQUE KEY `name` (`name`),
   KEY `name_2` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tag`

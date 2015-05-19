@@ -59,8 +59,12 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 				'Content-Type' : 'application/x-www-form-urlencoded'
 			}
 		}).success(function(res) {
-			$scope.id = res;
-			console.log('idddddddddddddd:' + $scope.id);
+			console.log(res);
+			if (res.id == null) {
+				$scope.result = "Error: " + res.msg;
+				return;
+			}
+			$scope.id = res.id;
 			console.log($scope.diemden);
 			$scope.uploadToFolder($scope.anh_dai_dien, 'diemden/' + $scope.id);
 			$scope.uploadToFolder($scope.album, 'diemden/' + $scope.id);
@@ -73,10 +77,7 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 
 			$scope.result = "Đã thêm thành công vào cơ sở dữ liệu";
 		});
-				
 	};
-
-
 
 	$scope.addImg = function(it) {
 		p = findLocation($scope.diemden.mo_ta, it);
