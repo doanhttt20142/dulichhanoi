@@ -3,9 +3,9 @@
  * Khai báo các hằng số chung được dùng trong chương trình
  */
 var dulichapp = angular.module("dulichapp", ["ngRoute","ngFileUpload", "angular-carousel"]);
-var BASE_LINK_APP = "http://localhost/dulichhanoi/clientapp/";
-var HOST_SERVER = "http://localhost/dulichhanoi/index.php/";
-var FOLDER_IMGS = "http://localhost/dulichhanoi/imgs/";
+var BASE_LINK_APP = "http://localhost:81/dulichhanoi/clientapp/";
+var HOST_SERVER = "http://localhost:81/dulichhanoi/index.php/";
+var FOLDER_IMGS = "http://localhost:81/dulichhanoi/imgs/";
 
 dulichapp.config(["$routeProvider", function($routeProvider) {
 	$routeProvider
@@ -24,6 +24,10 @@ dulichapp.config(["$routeProvider", function($routeProvider) {
 	.when('/nhahang', {
 		templateUrl: "nhahang/topnhahang.html",
 		controller: "topnhahangCtrl"
+	})
+	.when('/nhahang/add', {
+		templateUrl: "nhahang/addnhahang.html",
+		controller: "addnhahangCtrl"
 	})
 	.when('/nhahang/:id', {
 		templateUrl: "nhahang/detailnhahang.html",
@@ -49,6 +53,10 @@ dulichapp.config(["$routeProvider", function($routeProvider) {
 		templateUrl: "monan/topmonan.html",
 		controller: "topmonanCtrl"
 	})
+	.when('/monan/add', {
+		templateUrl: "monan/addmonan.html",
+		controller: "addmonanCtrl"
+	})
 	.when('/monan/:id', {
 		templateUrl: "monan/detailmonan.html",
 		controller: "detailmonanCtrl"
@@ -64,6 +72,10 @@ dulichapp.config(["$routeProvider", function($routeProvider) {
 	.when('/giaitri', {
 		templateUrl: "giaitri/topgiaitri.html",
 		controller: "topgiaitriCtrl"
+	})
+	.when('/giaitri/add', {
+		templateUrl: "giaitri/addgiaitri.html",
+		controller: "addgiaitriCtrl"
 	})
 	.when('/giaitri/:id', {
 		templateUrl: "giaitri/detailgiaitri.html",

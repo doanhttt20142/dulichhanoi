@@ -1,5 +1,4 @@
-.vienden {
-	border-width: 2px;
-	border-color: black;
-	padding: 10px;
+#wrapper{
+    margin: 10px auto;
+    width: 1200px;
 }

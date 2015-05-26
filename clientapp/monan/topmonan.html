@@ -1,1 +1,16 @@
-top món ăn
+<h3>Danh sach mon an </h3>
+
+<button ng-click="viewCollumn()">viewcount</button>
+<button ng-click="rateCollumn()">rate</button>
+<ul ng-repeat="monan in data">
+<li>
+<a ng-href="#/monan/{{monan.id}}">{{monan.ten}}</a>
+<span style="background-color: silver;">{{monan.viewcount}}</span>
+<span style="background-color: silver;">{{monan.rate}}</span>
+<br>
+{{monan.tom_tat}}
+<br>
+<img ng-src="{{folderimgs}}/monan/{{monan.id}}/{{monan.anh_dai_dien}}" width="200"/>
+</li>
+</ul>
+<button ng-click="loadmore()" ng-show="hasMore">Hien thi them</button>
