@@ -65,6 +65,10 @@ dulichapp.config(["$routeProvider", function($routeProvider) {
 		templateUrl: "giaitri/topgiaitri.html",
 		controller: "topgiaitriCtrl"
 	})
+	.when('/giaitri/add', {
+		templateUrl: "giaitri/addgiaitri.html",
+		controller: "addgiaitriCtrl"
+	})
 	.when('/giaitri/:id', {
 		templateUrl: "giaitri/detailgiaitri.html",
 		controller: "detailgiaitriCtrl"
