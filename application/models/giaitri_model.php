@@ -37,13 +37,21 @@ class giaitri_model extends CI_Model implements crudmodel{
 	}
 	
 	public function insert($obj) {
-		$obj->mo_ta = json_encode($obj->mo_ta);
-		$obj->tag = json_encode($obj->tag);
-		$obj->album = json_encode($obj->album);
-		$data = (array)$obj;
-		$this->load->database();
-		$this->db->insert('giaitri', $data);
-		return mysql_insert_id();
+		$result = new stdClass();
+		try {
+			$obj->mo_ta = json_encode($obj->mo_ta);
+			$obj->tag = json_encode($obj->tag);
+			$obj->album = json_encode($obj->album);
+			$data = (array)$obj;
+			$this->load->database();
+			$this->db->insert('giaitri', $data);
+			$result->id = mysql_insert_id();
+		} catch (Exception $e) {
+			$result->id = null;
+			$result->msg = $e->getMessage();
+		} finally {
+			return $result;
+		}
 	}
 		
 	public function delete($id) {
@@ -72,5 +80,6 @@ class giaitri_model extends CI_Model implements crudmodel{
 		));
 	}
 }
+
 
 ?>

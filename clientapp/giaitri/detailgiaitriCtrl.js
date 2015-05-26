@@ -1,9 +1,9 @@
 /**
  *
  */
-dulichapp.controller('detailgiaitriCtrl', function($scope, $http, $routeParams) {
-	$scope.id = $routeParams.id;
-	
+
+dulichapp.controller('detailgiaitriCtrl', function($scope,$routeParams,$http) {
+	$scope.id = $routeParams.id;	
 	$scope.folderimgs = FOLDER_IMGS + 'giaitri/';
 	
 	$scope.giaitri = null;
@@ -23,5 +23,4 @@ dulichapp.controller('detailgiaitriCtrl', function($scope, $http, $routeParams) 
 	};
 	
 	$scope.refresh();
-	
 });

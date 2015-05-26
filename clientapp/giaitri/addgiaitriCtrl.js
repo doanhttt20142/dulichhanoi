@@ -59,8 +59,12 @@ dulichapp.controller('addgiaitriCtrl', function($scope, $http, Upload) {
 				'Content-Type' : 'application/x-www-form-urlencoded'
 			}
 		}).success(function(res) {
-			$scope.id = res;
-			console.log('idddddddddddddd:' + $scope.id);
+			console.log(res);
+			if (res.id == null) {
+				$scope.result = "Error: " + res.msg;
+				return;
+			}
+			$scope.id = res.id;
 			console.log($scope.giaitri);
 			$scope.uploadToFolder($scope.anh_dai_dien, 'giaitri/' + $scope.id);
 			$scope.uploadToFolder($scope.album, 'giaitri/' + $scope.id);
@@ -73,11 +77,7 @@ dulichapp.controller('addgiaitriCtrl', function($scope, $http, Upload) {
 
 			$scope.result = "Đã thêm thành công vào cơ sở dữ liệu";
 		});
-				
 	};
-
-
-
 	$scope.addImg = function(it) {
 		p = findLocation($scope.giaitri.mo_ta, it);
 		for (var i = $scope.giaitri.mo_ta.length - 1; i > p; i--) {

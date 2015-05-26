@@ -90,6 +90,27 @@ dulichapp.config(["$routeProvider", function($routeProvider) {
 	});
 }]);
 
+dulichapp.factory('dlhn_crud',function($http) {
+	var crud = {};
+	
+	crud.add = function(category, data, recall) {
+		$http({
+			method : 'POST',
+			url : HOST_SERVER + 'crud/add/' + category,
+			data : data,
+			headers : {
+				'Content-Type' : 'application/x-www-form-urlencoded'
+			}
+		}).success(function(res) {
+			recall.call(this, res);
+		});
+	};
+	
+	
+	
+	return crud;
+});
+
 dulichapp.directive('script', function() {
     return {
       restrict: 'E',
@@ -103,7 +124,7 @@ dulichapp.directive('script', function() {
       }
     };
 });
-   
+
 dulichapp.directive('album', function($timeout) {
 	  return {
 		    restrict: 'AE',

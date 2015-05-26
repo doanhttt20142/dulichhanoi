@@ -52,7 +52,12 @@ class crud extends CI_Controller{
 		$obj = json_decode(file_get_contents('php://input'));
 		$modelname = $category.'_model';
 		$this->load->model($modelname);
-		$id = $this->{$modelname}->insert(clone $obj);
+		$result = $this->{$modelname}->insert(clone $obj);
+		if ($result->id == null) {
+			echo json_encode($result);
+			return;
+		}
+		$id = $result->id;
 		$this->load->model('tag_model');
 		foreach ($obj->tag as $tag) {
 			try {
@@ -64,7 +69,7 @@ class crud extends CI_Controller{
 				}
 			}
 		}
-		echo $id;
+		echo json_encode($result);
 	}
 		
 	/**

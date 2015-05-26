@@ -1,7 +1,7 @@
 /**
  * 
  */
-dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
+dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload, dlhn_crud) {
 	$scope.folderimgs = FOLDER_IMGS;
 
 	$scope.diemden = {};
@@ -51,16 +51,13 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 	
 	$scope.add = function() {
 		$scope.extractLink();
-		$http({
-			method : 'POST',
-			url : HOST_SERVER + 'crud/add/diemden',
-			data : $scope.diemden,
-			headers : {
-				'Content-Type' : 'application/x-www-form-urlencoded'
+		dlhn_crud.add('diemden', $scope.diemden, function(res){
+			console.log(res);
+			if (res.id == null) {
+				$scope.result = "Error: " + res.msg;
+				return;
 			}
-		}).success(function(res) {
-			$scope.id = res;
-			console.log('idddddddddddddd:' + $scope.id);
+			$scope.id = res.id;
 			console.log($scope.diemden);
 			$scope.uploadToFolder($scope.anh_dai_dien, 'diemden/' + $scope.id);
 			$scope.uploadToFolder($scope.album, 'diemden/' + $scope.id);
@@ -73,10 +70,34 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload) {
 
 			$scope.result = "Đã thêm thành công vào cơ sở dữ liệu";
 		});
-				
+		
+//		$http({
+//			method : 'POST',
+//			url : HOST_SERVER + 'crud/add/diemden',
+//			data : $scope.diemden,
+//			headers : {
+//				'Content-Type' : 'application/x-www-form-urlencoded'
+//			}
+//		}).success(function(res) {
+//			console.log(res);
+//			if (res.id == null) {
+//				$scope.result = "Error: " + res.msg;
+//				return;
+//			}
+//			$scope.id = res.id;
+//			console.log($scope.diemden);
+//			$scope.uploadToFolder($scope.anh_dai_dien, 'diemden/' + $scope.id);
+//			$scope.uploadToFolder($scope.album, 'diemden/' + $scope.id);
+//			
+//			for(var i=0; i<$scope.diemden.mo_ta.length; i++) {
+//				if($scope.diemden.mo_ta[i].type == 'img') {
+//					$scope.uploadToFolder($scope.imgmota[i],'diemden/' + $scope.id);
+//				}
+//			}
+//
+//			$scope.result = "Đã thêm thành công vào cơ sở dữ liệu";
+//		});
 	};
-
-
 
 	$scope.addImg = function(it) {
 		p = findLocation($scope.diemden.mo_ta, it);
