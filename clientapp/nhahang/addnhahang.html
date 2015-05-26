@@ -1,0 +1,89 @@
+<style>
+.cover{ margin: 0px 0px 0px 200px; width: 600px; background: rgb(220,220,220);}
+</style>
+<div class="cover">
+
+<h3>Them nha hang</h3>
+
+<div class="vienden">
+Ten nha hang:
+<input type="text" ng-model="nhahang.ten">
+<br>
+</div>
+
+<div class="vienden">
+Dia chi:
+<input type="text" ng-model="nhahang.dia_chi">
+<br>
+</div>
+
+<div class="vienden">
+<button ngf-multiple=false ngf-select ng-model="anh_dai_dien">Anh dai dien</button>
+<img ngf-src="anh_dai_dien[0]" width="200">
+<br>
+</div>
+
+<div class="vienden">
+Tom tat:
+<textarea rows="4" cols="30" ng-model="nhahang.tom_tat"></textarea>
+<br>
+</div>
+
+<div class="vienden">
+Album:
+<button ngf-multiple=true ngf-select ng-model="album">Album</button>
+<div ng-repeat="img in album">
+<img ngf-src="img" width="200">
+<input type="text" ng-model="nhahang.album[$index].des">
+</div>
+</div>
+
+<div class="vienden">
+Mo ta:
+<br>
+<div ng-repeat="it in nhahang.mo_ta">
+<div ng-if="it.type == 'title'">
+title:<input type="text" ng-model="it.content"/>
+</div>
+<div ng-if="it.type == 'text'">
+text:<textarea rows="3" cols="20" ng-model="it.content"></textarea>
+</div>
+<div ng-if="it.type == 'img'">
+img: <button ngf-multiple=true ngf-select ng-model="imgmota[$index]">Album</button>
+<img ngf-src="imgmota[$index][0]" width="200">
+<input type="text" ng-model="nhahang.mo_ta[$index].des">
+</div>
+<button ng-click="addTitle(it)">Add Title</button>
+<button ng-click="addText(it)">Add Text</button>
+<button ng-click="addImg(it)">Add Image</button>
+<button ng-click="del(it)">Delete</button>
+</div>
+<br>
+</div>
+
+<div class="vienden">
+Kinh do:
+<input type="text" ng-model="nhahang.kinh_do">
+<br>
+Vi do:
+<input type="text" ng-model="nhahang.vi_do">
+<br>
+</div>
+
+<div class="vienden">
+Tag:
+<div class="vienden" ng-repeat="tag in nhahang.tag">
+<span style="background-color: silver;">{{tag}}</span>
+<button ng-click="removetag(tag)">delete</button>
+</div>
+Ten:<input type="text" ng-model="temptag">
+<br>
+<button ng-click="addtag()">Add</button>
+<br>
+</div>
+
+<p>{{nhahang}}</p>
+
+<button ng-click="add()">OK</button>
+<div ng-show="result != null">{{result}}</div>
+</div>
