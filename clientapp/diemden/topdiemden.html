@@ -1,18 +1,26 @@
-<style>
-a.a1{font-style: bold; font-size: 20px; color: green;}
-</style>
-<h3>Danh sách điểm đến</h3>
-<button ng-click="viewCollumn()">viewcount</button>
-<button ng-click="rateCollumn()">rate</button>
-<ul ng-repeat="diemden in data">
-<li>
-<a class="a1" ng-href="#/diemden/{{diemden.id}}">{{diemden.ten}}</a>
-<span style="background-color: silver;">{{diemden.viewcount}}</span>
-<span style="background-color: silver;">{{diemden.rate}}</span>
-<br>
-<p class="p1">{{diemden.tom_tat}}</p>
-<br>
-<img ng-src="{{folderimgs}}/{{diemden.id}}/{{diemden.anh_dai_dien}}" width="200"/>
-</li>
-</ul>
-<button ng-click="loadmore()" ng-show="hasMore">Hiển thị thêm</button>
+<link rel="stylesheet" href="diemden/topdiemdencss.css" />
+
+<div class="place">
+<h3 class="h3">DANH SÁCH ĐIỂM ĐẾN</h3>
+<button class="btn" ng-click="rateCollumn()">Rate</button>
+<button class="btn" ng-click="viewCollumn()">View</button>
+<br clear:both><br><br>
+<div ng-repeat="diemden in data">
+    <div class="dd">
+    <div class="bubble">
+        <a class="a1" ng-href="#/diemden/{{diemden.id}}">{{diemden.ten | uppercase}}</a>
+    </div>
+    <p class="p2">
+        Lượt xem:{{diemden.viewcount}}<br>
+        Điểm:{{diemden.rate}}
+        <div class="luotxem"></div>
+    </p>
+    <br>
+    <p class="p1">{{diemden.tom_tat}}</p>
+    <br>
+    <img class="img1" ng-src="{{folderimgs}}/{{diemden.id}}/{{diemden.anh_dai_dien}}" />
+    </div>
+</div>
+<div style="clear: both"></div>
+<button class="btn1" ng-click="loadmore()" ng-show="hasMore">Hiển thị thêm</button>
+</div>

@@ -2,7 +2,7 @@
  * 
  */
 dulichapp.controller('topdiemdenCtrl', function($scope, $http) {
-	D = 5;
+	D = 3;
 	column = 'viewcount';
 	$scope.countRecord;
 	$scope.data = [];

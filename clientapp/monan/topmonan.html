@@ -1,16 +1,26 @@
-<h3>Danh sach mon an </h3>
-
-<button ng-click="viewCollumn()">viewcount</button>
-<button ng-click="rateCollumn()">rate</button>
-<ul ng-repeat="monan in data">
-<li>
-<a ng-href="#/monan/{{monan.id}}">{{monan.ten}}</a>
-<span style="background-color: silver;">{{monan.viewcount}}</span>
-<span style="background-color: silver;">{{monan.rate}}</span>
-<br>
-{{monan.tom_tat}}
-<br>
-<img ng-src="{{folderimgs}}/monan/{{monan.id}}/{{monan.anh_dai_dien}}" width="200"/>
-</li>
-</ul>
-<button ng-click="loadmore()" ng-show="hasMore">Hien thi them</button>
+<link rel="stylesheet" href="diemden/topdiemdencss.css" />
+<meta charset="UTF-8">
+<div class="place">
+<h3 class="h3">Danh sach mon an </h3>
+<button  class="btn" ng-click="viewCollumn()">View</button>
+<button  class="btn" ng-click="rateCollumn()">Rate</button>
+<br clear:both><br><br>
+<div ng-repeat="monan in data">
+    <div class="dd">
+    <div class="bubble">
+        <a class="a1" ng-href="#/monan/{{monan.id}}">{{monan.ten | uppercase}}</a>
+    </div>
+    <p class="p2">
+        Luot xem:{{monan.viewcount}}<br>
+        Diem:{{monan.rate}}
+        <div class="luotxem"></div>
+    </p>
+    <br>
+    <p class="p1">{{monan.tom_tat}}</p>
+    <br>
+    <img  class="img1" ng-src="{{folderimgs}}/monan/{{monan.id}}/{{monan.anh_dai_dien}}" width="200"/>
+</div>
+</div>
+<div style="clear: both"></div>
+<button class="btn1" ng-click="loadmore()" ng-show="hasMore">Hien thi them</button>
+</div>
