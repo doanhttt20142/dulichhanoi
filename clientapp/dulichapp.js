@@ -25,6 +25,10 @@ dulichapp.config(["$routeProvider", function($routeProvider) {
 		templateUrl: "nhahang/topnhahang.html",
 		controller: "topnhahangCtrl"
 	})
+	.when('/nhahang/add', {
+		templateUrl: "nhahang/addnhahang.html",
+		controller: "addnhahangCtrl"
+	})
 	.when('/nhahang/:id', {
 		templateUrl: "nhahang/detailnhahang.html",
 		controller: "detailnhahangCtrl"
@@ -48,6 +52,10 @@ dulichapp.config(["$routeProvider", function($routeProvider) {
 	.when('/monan', {
 		templateUrl: "monan/topmonan.html",
 		controller: "topmonanCtrl"
+	})
+	.when('/monan/add', {
+		templateUrl: "monan/addmonan.html",
+		controller: "addmonanCtrl"
 	})
 	.when('/monan/:id', {
 		templateUrl: "monan/detailmonan.html",
