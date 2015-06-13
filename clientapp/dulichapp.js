@@ -3,9 +3,9 @@
  * Khai báo các hằng số chung được dùng trong chương trình
  */
 var dulichapp = angular.module("dulichapp", ["ngRoute","ngFileUpload", "angular-carousel"]);
-var BASE_LINK_APP = "http://localhost:81/dulichhanoi/clientapp/";
-var HOST_SERVER = "http://localhost:81/dulichhanoi/index.php/";
-var FOLDER_IMGS = "http://localhost:81/dulichhanoi/imgs/";
+var BASE_LINK_APP = "http://localhost/dulichhanoi/clientapp/";
+var HOST_SERVER = "http://localhost/dulichhanoi/index.php/";
+var FOLDER_IMGS = "http://localhost/dulichhanoi/imgs/";
 
 dulichapp.config(["$routeProvider", function($routeProvider) {
 	$routeProvider

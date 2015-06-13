@@ -11,7 +11,9 @@
 <script type="text/javascript" src="lib/dang-jssor.min.js"></script>
 <script type="text/javascript" src="lib/angular-carousel.min.js"></script>
 <script type="text/javascript" src="lib/angular-touch.min.js"></script>
-<!-- clinet -->
+<script type="text/javascript" src="lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.min.js"></script>
+<!-- client -->
 <script type="text/javascript" src="dulichapp.js"></script>
 <script type="text/javascript" src="menu/menuCtrl.js"></script>
 <script type="text/javascript" src="dispalyCtrl.js"></script>
@@ -38,19 +40,16 @@
 <script type="text/javascript" src="tour/toptourCtrl.js"></script>
 <!-- tim kiem -->
 <script type="text/javascript" src="timkiem/searchCtrl.js"></script>
-<link type="text/css" rel="stylesheet" href="lib/angular-carousel.min.css">
+<link type="text/css" rel="stylesheet"
+	href="lib/angular-carousel.min.css"
+>
+<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css">
 </head>
 <body ng-app="dulichapp">
-<div ng-controller="displayCtrl">
-<div ng-show="displayAd">
-<ul rn-carousel class="image">
-  <li>slide #1</li>
-  <li>slide #2</li>
-  <li>slide #3</li>
-</ul>
-</div>
-<div ng-show="displayNavi">Navi</div>
-<div ng-view></div>
-</div>
+	<div ng-controller="displayCtrl">
+		<div ng-show="displayAd"></div>
+		<div ng-show="displayNavi">Navi</div>
+		<div ng-view></div>
+	</div>
 </body>
 </html>
