@@ -1,0 +1,95 @@
+ 
+<script language=javascript>
+ 
+var ie = navigator.appName=='Microsoft Internet Explorer'?true:false,
+	op = window.opera?true:false,
+	ns = navigator.vendor?true:false;
+
+var starPath = 'zzzstar/';
+
+
+function rate(evt)
+{
+	var obj = getObject(evt);
+ 
+	if(obj.className != 'jsbank_rate_item ng-scope')
+		return;
+	var w = event.offsetX;
+	var disp_mark = document.getElementById('jsbank_disp_mark');
+	
+	if(w>135 && w<=150)
+	{
+		obj.src = starPath + '5.0.gif';
+		disp_mark.innerText = '5';
+	}
+	else if(w>120 && w<=135)
+	{
+		obj.src = starPath + '4.5.gif';
+		disp_mark.innerText = '4.5';
+	}
+	else if(w>105 && w<=120)
+	{
+		obj.src = starPath + '4.0.gif';
+		disp_mark.innerText = '4';
+	}
+	else if(w>90 && w<=105)
+	{
+		obj.src = starPath + '3.5.gif';
+		disp_mark.innerText = '3.5';
+	}
+	else if(w>75 && w<=90)
+	{
+		obj.src = starPath + '3.0.gif';
+		disp_mark.innerText = '3';
+	}
+	else if(w>60 && w<=75)
+	{
+		obj.src = starPath + '2.5.gif';
+		disp_mark.innerText = '2.5';
+	}
+	else if(w>45 && w<=60)
+	{
+		obj.src = starPath + '2.0.gif';
+		disp_mark.innerText = '2';
+	}
+	else if(w>30 && w<=45)
+	{
+		obj.src = starPath + '1.5.gif';
+		disp_mark.innerText = '1.5';
+	}
+	else if(w>15 && w<=30)
+	{
+		obj.src = starPath + '1.0.gif';
+		disp_mark.innerText = '1';
+	}
+	else
+	{
+		obj.src = starPath + '0.5.gif';
+		disp_mark.innerText = '0.5';
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// getObject function
+///////////////////////////////////////////////////////////////////////////////
+function getObject(evt)
+{
+	var srcElem;
+	if(ie)
+	{
+		srcElem = event.srcElement;
+	}
+	else
+	{
+		srcElem = evt.target;
+	}
+	return srcElem;
+}
+document.onmousemove = rate;
+</script>
+<body>
+<img align=absmiddle src='zzzstar/notRated.gif' class=jsbank_rate_item  style="cursor: hand;" /><br />
+<span id=jsbank_disp_mark></span>
+	
+</body>
+</html>

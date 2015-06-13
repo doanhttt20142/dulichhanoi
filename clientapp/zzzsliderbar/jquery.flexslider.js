@@ -4,6 +4,7 @@
  * Contributing Author: Tyler Smith
  */
 ;
+
 (function ($) {
 
   //FlexSlider: Object Instance
