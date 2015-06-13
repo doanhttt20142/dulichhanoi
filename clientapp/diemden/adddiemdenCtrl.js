@@ -172,4 +172,30 @@ dulichapp.controller('adddiemdenCtrl', function($scope, $http, Upload, dlhn_crud
 		p = findLocation($scope.diemden.tag, tag);
 		$scope.diemden.tag.splice(p, 1);
 	};
+	
+	$(function() {	 
+	    $( ".taginput" ).autocomplete({
+	      source: function( request, response ) {
+	        $.ajax({
+	          url: HOST_SERVER + "tag/getHintTag",
+	          dataType: "json",
+	          data: {
+	            q: request.term
+	          },
+	          success: function( data ) {
+	            response( data );
+	          }
+	        });
+	      },
+	      minLength: 2,
+	      select: function( event, ui ) {
+	      },
+	      open: function() {
+	        $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+	      },
+	      close: function() {
+	        $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+	      }
+	    });
+	  });
 });
