@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Lam vi du mau</title>
-<!-- AngularJS - json -->
+<link rel="stylesheet" href="css/style.css" />
 <script type="text/javascript" src="lib/angular.min.js"></script>
 <script type="text/javascript" src="lib/angular-route.min.js"></script>
 <script type="text/javascript" src="lib/ng-file-upload.min.js"></script>
+
 <script type="text/javascript" src="lib/jssor.slider.mini.js"></script>
 <script type="text/javascript" src="lib/dang-jssor.min.js"></script>
 <script type="text/javascript" src="lib/angular-carousel.min.js"></script>
@@ -30,6 +31,7 @@
 <!--  nha hang -->
 <script type="text/javascript" src="nhahang/detailnhahangCtrl.js"></script>
 <script type="text/javascript" src="nhahang/topnhahangCtrl.js"></script>
+<script type="text/javascript" src="nhahang/addnhahangCtrl.js"></script>
 <!-- giai tri -->
 <script type="text/javascript" src="giaitri/topgiaitriCtrl.js"></script>
 <script type="text/javascript" src="giaitri/addgiaitriCtrl.js"></script>
@@ -44,12 +46,31 @@
 	href="lib/angular-carousel.min.css"
 >
 <link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css">
-</head>
-<body ng-app="dulichapp">
-	<div ng-controller="displayCtrl">
-		<div ng-show="displayAd"></div>
-		<div ng-show="displayNavi">Navi</div>
-		<div ng-view></div>
-	</div>
+</head
+<body ng-app="dulichapp" style="background-image: url(image/menu_pattern.png), url(image/menu_7.jpg)">
+ <!-- ---------------------------------------------------------------------------------------------------------> 
+<SCRIPT src="zzzads/floater_xlib.js" type=text/javascript></SCRIPT>
+<SCRIPT src="zzzads/zzzads.js" type=text/javascript></SCRIPT>
+<div style="width: 1040px; margin:25px 0px -510px 55px">
+    <div id="floating_banner_left" style="text-align:right;position:relative; overflow:hidden; top: 0px; left: 0px; width:105px;">
+    <div id="floating_banner_left_content"> 
+        <a href="#" target="_blank"><img src="zzzads/banner1.png" border="0" width="105px" alt="" /></a><br /> 
+    </div>
+    </div>
+</div>  
+<div style="width: 1040px; margin:0px 0px -540px 80px">  
+    <div id="floating_banner_right" style="text-align:left;position:relative;overflow:hidden;top: 0px; right:0px; width: 105px;">
+        <div id="floating_banner_right_content"  >
+        <a href="#" target="_blank"><img src="zzzads/banner2.png" border="0" width="105px" alt="" /></a><br /> 
+    </div>
+    </div>
+</div>
+<SCRIPT type=text/javascript>
+	pepsi_floating_init();
+</SCRIPT>
+<!-- --------------------------------------------------------------------------------------------------------->
+
+<!-- --------------------------------------------------------------------------------------------------------->
+<div ng-view></div>
 </body>
 </html>
