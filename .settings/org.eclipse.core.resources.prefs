@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-eclipse.preferences.version=1
-encoding//clientapp/giaitri/addgiaitri.html=UTF-8
-encoding//clientapp/nhahang/addnhahang.html=UTF-8
-encoding//clientapp/nhahang/detailnhahang.html=UTF-8
-=======
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/doanhttt20142/dulichhanoi
 eclipse.preferences.version=1
 encoding//application/controllers/crud.php=UTF-8
 encoding//clientapp/diemden/detaildiemden.html=UTF-8
@@ -12,4 +9,5 @@ encoding//clientapp/giaitri/addgiaitri.html=UTF-8
 encoding//clientapp/giaitri/detailgiaitri.html=UTF-8
 encoding//clientapp/giaitri/topgiaitri.html=UTF-8
 encoding//clientapp/menu/menu.html=UTF-8
->>>>>>> branch 'master' of https://github.com/doanhttt20142/dulichhanoi
+encoding//clientapp/nhahang/addnhahang.html=UTF-8
+encoding//clientapp/nhahang/detailnhahang.html=UTF-8
