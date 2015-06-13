@@ -1,0 +1,61 @@
+<link rel="stylesheet" type="text/css" href="css/menu_demo.css" />
+<link rel="stylesheet" type="text/css" href="css/menu_style7.css" />
+<style>
+@font-face {  font-family: 'Josefin Slab';  font-style: normal;  font-weight: 300; }
+</style>
+
+        <div class="container" style="margin:0px 0px 0px -700px">
+            <div class="content">
+                <ul class="bmenu">
+                    <li><a href="#" onclick="refresh()">tour hànội</a></li>
+                    <li><a href="#/diemden" onclick="refresh()">điểm đến</a></li>
+                    <li><a href="#/monan" onclick="refresh()">món ăn</a></li>
+                    <li><a href="#" onclick="refresh()">nhà hàng</a></li>
+                    <li><a href="#" onclick="refresh()">khách sạn</a></li>
+	                <li><a href="#" onclick="refresh()">giải trí mua sắm</a></li>                  
+                    <li><a href="#" onclick="refresh()">liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+<script>
+function refresh() {
+    location.reload();
+}
+</script>
+<!-- --------------------------------------------------------------------------------------------------------->
+<link rel="stylesheet" href="zzzsliderbar/flexslider.css" type="text/css" media="screen" />
+<div id="container" class="cf" style="margin: -360px -10px 0px 420px; padding-top:20px; width: 710px;">
+	<div id="main" role="main">
+      <section class="slider" >
+        <div class="flexslider" >
+          <ul class="slides">
+             
+			 <li><img src='zzzsliderbar/images/1.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/2.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/3.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/4.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/5.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/6.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/7.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/8.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/9.jpg' style='height:420px' /></li>
+             <li><img src='zzzsliderbar/images/10.jpg' style='height:420px' /></li>
+			 
+          </ul>
+        </div>
+      </section>
+    </div>
+</div>
+  <script defer src="zzzsliderbar/jquery.flexslider.js"></script>
+  <script type="text/javascript">
+   
+
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+ 
+  </script>
+<!-- --------------------------------------------------------------------------------------------------------->

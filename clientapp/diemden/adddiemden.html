@@ -1,0 +1,89 @@
+<style>
+.cover{ margin: 0px 0px 0px 200px; width: 600px; background: rgb(220,220,220);}
+</style>
+<div class="cover">
+
+<h3>Thêm điểm đến</h3>
+
+<div class="vienden">
+Tên điểm đến:
+<input type="text" ng-model="diemden.ten">
+<br>
+</div>
+
+<div class="vienden">
+Địa chỉ
+<input type="text" ng-model="diemden.dia_chi">
+<br>
+</div>
+
+<div class="vienden">
+<button ngf-multiple=false ngf-select ng-model="anh_dai_dien">Ảnh đại diện</button>
+<img ngf-src="anh_dai_dien[0]" width="200">
+<br>
+</div>
+
+<div class="vienden">
+Tóm tắt:
+<textarea rows="4" cols="30" ng-model="diemden.tom_tat"></textarea>
+<br>
+</div>
+
+<div class="vienden">
+Album:
+<button ngf-multiple=true ngf-select ng-model="album">Album</button>
+<div ng-repeat="img in album">
+<img ngf-src="img" width="200">
+<input type="text" ng-model="diemden.album[$index].des">
+</div>
+</div>
+
+<div class="vienden">
+Mô tả:
+<br>
+<div ng-repeat="it in diemden.mo_ta">
+<div ng-if="it.type == 'title'">
+title:<input type="text" ng-model="it.content"/>
+</div>
+<div ng-if="it.type == 'text'">
+text:<textarea rows="3" cols="20" ng-model="it.content"></textarea>
+</div>
+<div ng-if="it.type == 'img'">
+img: <button ngf-multiple=true ngf-select ng-model="imgmota[$index]">Album</button>
+<img ngf-src="imgmota[$index][0]" width="200">
+<input type="text" ng-model="diemden.mo_ta[$index].des">
+</div>
+<button ng-click="addTitle(it)">Add Title</button>
+<button ng-click="addText(it)">Add Text</button>
+<button ng-click="addImg(it)">Add Image</button>
+<button ng-click="del(it)">Delete</button>
+</div>
+<br>
+</div>
+
+<div class="vienden">
+Kinh độ:
+<input type="text" ng-model="diemden.kinh_do">
+<br>
+Vĩ độ:
+<input type="text" ng-model="diemden.vi_do">
+<br>
+</div>
+
+<div class="vienden">
+Tag:
+<div class="vienden" ng-repeat="tag in diemden.tag">
+<span style="background-color: silver;">{{tag}}</span>
+<button ng-click="removetag(tag)">delete</button>
+</div>
+Tên:<input type="text" ng-model="temptag" class="taginput">
+<br>
+<button ng-click="addtag()">Add</button>
+<br>
+</div>
+
+<p>{{diemden}}</p>
+
+<button ng-click="add()">OK</button>
+<div ng-show="result != null">{{result}}</div>
+</div>

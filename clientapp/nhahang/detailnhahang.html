@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="zzzlightbox/lightbox.css" />
+<link rel="stylesheet" href="zzzlightbox/screen.css" />
+<script src="zzzlightbox/lightbox-2.6.min.js"></script>
+<script src="zzzlightbox/modernizr.custom.js"></script>
+<style>
+p.p1{color: green; font-style:italic; font-size: 17px; padding: 10px 0px 0px 40px}
+.white{
+	background:rgb(200,200,200); 
+	padding: 20px 20px 20px 20px;
+	margin:10px 0px -10px 140px;
+    width: 900px;
+}
+h3.h3{color: green; font-size: 29px; font-weight: bold; text-align: center}
+p.p1{font-style: italic; color: purple; margin: 0px 0px 0px 600px;}
+.repeat{margin: 0px 0px 0px 5%; width: 90%; background: rgb(225,225,225); padding: 15px;}
+h4.h4{font-size: 18px;margin: 0px 0px -15px 0px;}
+</style>
+<div class="white" style="background: white">
+	<h3 class="h3">{{nhahang.ten| uppercase}}</h3>
+	<p class="p1">Dia chi: {{nhahang.dia_chi}}</p>
+	<br><br>
+	<div class="repeat" ng-repeat="it in nhahang.mo_ta">
+		<div ng-if="it.type == 'title'">
+			<h4 class="h4">{{it.content}}</h4>
+		</div>
+		<div ng-if="it.type == 'text'">{{it.content}}</div>
+		<div ng-if="it.type == 'img'">
+	        <a class='example-image-link' href="{{folderimgs}}/{{nhahang.id}}/{{it.src}}" data-lightbox='example-set'>
+                <img ng-src={{folderimgs}}/{{nhahang.id}}/{{it.src}} width="60%" style="margin: 0px 0px 0px 20%;"> 
+            </a>
+            <br>
+			<span ng-if="it.des != null">{{it.des}}</span>
+		</div>
+	</div>
+	<br><br><br><br>
+	<div ng-repeat="img in nhahang.album">
+		
+        <a class='example-image-link' href="{{folderimgs}}/{{nhahang.id}}/{{img.src}}" data-lightbox='example-set'>
+            <img ng-src="{{folderimgs}}/{{nhahang.id}}/{{img.src}}" width="200">
+        </a>
+        
+		<br> {{img.des}}
+	</div>
+</div>
