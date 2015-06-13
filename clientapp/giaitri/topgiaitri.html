@@ -1,19 +1,26 @@
+<link rel="stylesheet" href="diemden/topdiemdencss.css" />
 
-<style>
-a.a1{font-style: bold; font-size: 20px; color: green;}
-</style>
-<h3>Danh sách khu vui chơi giải trí</h3>
-<button ng-click="viewCollumn()">viewcount</button>
-<button ng-click="rateCollumn()">rate</button>
-<ul ng-repeat="giaitri in data">
-<li>
-<a class="a1" ng-href="#/giaitri/{{giaitri.id}}">{{giaitri.ten}}</a>
-<span style="background-color: silver;">{{giaitri.viewcount}}</span>
-<span style="background-color: silver;">{{giaitri.rate}}</span>
-<br>
-<p class="p1">{{giaitri.tom_tat}}</p>
-<br>
-<img ng-src="{{folderimgs}}/{{giaitri.id}}/{{giaitri.anh_dai_dien}}" width="200"/>
-</li>
-</ul>
-<button ng-click="loadmore()" ng-show="hasMore">Hiển thị thêm</button>
+<div class="place">
+<h3 class="h3">Danh sách khu vui chơi giải trí</h3>
+<button class="btn" ng-click="rateCollumn()">Rate</button>
+<button class="btn" ng-click="viewCollumn()">View</button>
+<br clear:both><br><br>
+<div ng-repeat="giaitri in data">
+    <div class="dd">
+    <div class="bubble">
+        <a class="a1" ng-href="#/giaitri/{{giaitri.id}}">{{giaitri.ten | uppercase}}</a>
+    </div>
+    <p class="p2">
+        Lượt xem:{{giaitri.viewcount}}<br>
+        Điểm:{{giaitri.rate}}
+        <div class="luotxem"></div>
+    </p>
+    <br>
+    <p class="p1">{{giaitri.tom_tat}}</p>
+    <br>
+    <img class="img1" ng-src="{{folderimgs}}/{{giaitri.id}}/{{giaitri.anh_dai_dien}}" />
+    </div>
+</div>
+<div style="clear: both"></div>
+<button class="btn1" ng-click="loadmore()" ng-show="hasMore">Hiển thị thêm</button>
+</div>
