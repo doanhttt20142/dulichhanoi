@@ -1,1 +1,92 @@
-detail khách sạn
+<link rel="stylesheet" href="zzzlightbox/lightbox.css" />
+<link rel="stylesheet" href="zzzlightbox/screen.css" />
+<script src="zzzlightbox/lightbox-2.6.min.js"></script>
+<script src="zzzlightbox/modernizr.custom.js"></script>
+<style>
+p.p1{color: green; font-style:italic; font-size: 17px; padding: 10px 0px 0px 40px}
+.sub, .white{	background:white;	padding: 20px 20px 20px 20px;	margin:-30px 0px 100px 65px;    width: 1020px;}
+.sub {width: 820px; margin-left: 170px}
+h3.h3{color: green; font-size: 29px; font-weight: bold; text-align: center}
+p.p1{font-style: italic; color: purple; margin: 0px 0px 0px 600px;}
+.repeat{margin: 0px 0px 0px 5%; width: 90%; background: rgb(225,225,225); padding: 15px;}
+h4.h4{font-size: 18px;margin: 0px 0px -15px 0px;}
+
+.album{margin: 10px auto; width: 880px; background: rgb(250,250,250); overflow:auto; padding: 10px;}
+img.img2{width:250px; height:190px;margin: 15px 4px 15px 5px;}
+img.img2:hover{border: 5px solid purple}
+
+</style>
+<div class="white" >
+	<h3 class="h3">{{khachsan.ten| uppercase}}</h3>
+    
+    <div ng-include="" src="'zzzstar/star.html'" style="float: right"></div><br clear:both><br><br>
+    
+	<p class="p1">Địa chỉ: {{khachsan.dia_chi}}</p>
+	<br><br>
+	<div class="repeat" ng-repeat="it in khachsan.mo_ta">
+		<div ng-if="it.type == 'title'">
+			<h4 class="h4">{{it.content}}</h4>
+		</div>
+		<div ng-if="it.type == 'text'">{{it.content}}</div>
+		<div ng-if="it.type == 'img'">
+	        <a class='example-image-link' href="{{folderimgs}}/{{khachsan.id}}/{{it.src}}" data-lightbox='example-set'>
+                <img ng-src={{folderimgs}}/{{khachsan.id}}/{{it.src}} width="60%" style="margin: 0px 0px 0px 20%;"> 
+            </a>
+            <br>
+			<span ng-if="it.des != null">{{it.des}}</span>
+		</div>
+	</div>
+	<br><br><br><br>
+    <div class="album">
+    <h3 class="h3">ALBUM</h3><br clear:both>
+	<div ng-repeat="img in khachsan.album">		
+        <a class='example-image-link' href="{{folderimgs}}/{{khachsan.id}}/{{img.src}}" data-lightbox='example-set' style="float: left;">
+            <img class="img2" ng-src="{{folderimgs}}/{{khachsan.id}}/{{img.src}}" >
+        </a>
+        </div>
+		<br> {{img.des}}
+	</div>
+</div>
+<div class="sub" >
+GOOGLE MAPS
+</div>
+<div class="sub" >
+BÌNH LUẬN
+</div>
+<!-- ====================================================================================================================== -->
+<style>
+.para{float:right; margin:70px 120px 0px 0px;}
+p.para1{width: 390px; padding: 45px 15px 45px 15px; background:rgb(150,210,110); font-size:23px; text-align: center; }
+p.para2{width: 390px; padding: 70px 15px 70px 15px; background:rgb(235,245,255); }
+.para3{width:  390px; padding: 50px 15px 50px 15px; background:rgb(235,245,255);}
+.email{float:right; color:brown;font-size: 19px;font-style:italic; margin: -50px 10px 20px 0px;}
+p.para1, p.para2, .para3{margin-top:-22px;}
+</style>
+<!-- ---------------------------------------------------------------------------------------------------------------------->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-page" data-href="https://www.facebook.com/saigontourist.sts" data-hide-cover="false" data-show-facepile="true" data-show-posts="true" 
+style="float:left; width: 500px;   margin: 50px -10px 0px 130px;"></div>  
+<!-- ---------------------------------------------------------------------------------------------------------------------->
+<div class="para">
+<p class="para1">ĐĂNG KÝ NHẬN EMAIL</p>
+<p class="para2"><img src="image/dangkyemail.png" style="width: 170px; margin: -60px 20px 0px -15px; float:left ">
+	<div class="email">
+    <p>Đăng ký nhận ngay thông tin</p>
+    <p>HOT nhất, hấp dẫn nhất từ</p>
+    <p>Hà Thành Tourist</p>
+    </div>
+</p>
+<div class="para3">
+	<form action="" method="post">
+    	<input type="text" size="23" name="subscriber" placeholder="Email của bạn!" style="font-size:19px">
+    	<input type="submit" name="dangkyemail" value="Đăng kí" style="padding: 8px 18px 8px 18px; background:green;color:white">   	</form>
+</div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------------------------------->

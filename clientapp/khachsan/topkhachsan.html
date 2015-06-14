@@ -1,1 +1,26 @@
-top khách sạn
+<link rel="stylesheet" href="diemden/topdiemdencss.css" />
+
+<div class="place">
+<h3 class="h3">DANH SÁCH KHÁCH SẠN</h3>
+<button class="btn" ng-click="rateCollumn()">Rate</button>
+<button class="btn" ng-click="viewCollumn()">View</button>
+<br clear:both><br><br>
+<div ng-repeat="khachsan in data">
+    <div class="dd">
+    <div class="bubble">
+        <a class="a1" ng-href="#/khachsan/{{khachsan.id}}">{{khachsan.ten | uppercase}}</a>
+    </div>
+    <p class="p2">
+        Lượt xem:{{khachsan.viewcount}}<br>
+        Điểm:{{khachsan.rate}}
+        <div class="luotxem"></div>
+    </p>
+    <br>
+    <p class="p1">{{khachsan.tom_tat}}</p>
+    <br>
+    <img class="img1" ng-src="{{folderimgs}}/{{khachsan.id}}/{{khachsan.anh_dai_dien}}" />
+    </div>
+</div>
+<div style="clear: both"></div>
+<button class="btn1" ng-click="loadmore()" ng-show="hasMore">Hiển thị thêm</button>
+</div>

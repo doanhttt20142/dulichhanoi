@@ -17,6 +17,10 @@ dulichapp.config(["$routeProvider", function($routeProvider) {
 		templateUrl: "khachsan/topkhachsan.html",
 		controller: "topkhachsanCtrl"
 	})
+	.when('/khachsan/add', {
+		templateUrl: "khachsan/addkhachsan.html",
+		controller: "addkhachsanCtrl"
+	})
 	.when('/khachsan/:id', {
 		templateUrl: "khachsan/detailkhachsan.html",
 		controller: "detailkhachsanCtrl"

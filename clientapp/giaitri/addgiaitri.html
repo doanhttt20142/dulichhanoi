@@ -1,22 +1,18 @@
 <style>
-.cover {
-	margin: 0px 0px 0px 200px;
-	width: 600px;
-	background: rgb(220, 220, 220);
-}
+.cover{ margin: 0px 0px 0px 200px; width: 600px; background: rgb(220,220,220);}
 </style>
 <div class="cover">
 
-<h3>Thêm Khu vui chơi giải trí</h3>
+<h3>Thêm giải trí</h3>
 
 <div class="vienden">
-Tên khu vui chơi giải trí:
+Tên giải trí:
 <input type="text" ng-model="giaitri.ten">
 <br>
 </div>
 
 <div class="vienden">
-Địa chỉ:
+Địa chỉ
 <input type="text" ng-model="giaitri.dia_chi">
 <br>
 </div>
@@ -80,7 +76,7 @@ Tag:
 <span style="background-color: silver;">{{tag}}</span>
 <button ng-click="removetag(tag)">delete</button>
 </div>
-Tên:<input type="text" ng-model="temptag">
+Tên:<input type="text" ng-model="temptag" class="taginput">
 <br>
 <button ng-click="addtag()">Add</button>
 <br>
